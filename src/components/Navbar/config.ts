@@ -5,8 +5,8 @@ const links = [
     local: true,
   },
   {
-    name: "About",
-    path: "/about",
+    name: "Script",
+    path: "/script",
     local: true,
   },
   {
