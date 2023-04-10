@@ -7,6 +7,9 @@ import { useEffect, useState } from "react";
 import { copyToClipboard } from "@/lib/utils";
 
 export default function CopyButton({ text }: { text: string }) {
+  let origin = "";
+  if (typeof window !== "undefined") origin = window.location.origin;
+
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -15,7 +18,7 @@ export default function CopyButton({ text }: { text: string }) {
   }, [copied]);
 
   function handleClick() {
-    copyToClipboard(text);
+    copyToClipboard(text.replace("${origion}", origin));
     setCopied(true);
   }
 

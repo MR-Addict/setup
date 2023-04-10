@@ -1,8 +1,8 @@
 "use client";
 
 export default function CmdCode({ cmd }: { cmd: string }) {
-  let origion = "http://example.com/";
+  let origin = "";
+  if (typeof window !== "undefined") origin = window.location.origin;
 
-  if (typeof window !== "undefined") origion = window.location.origin;
-  return <code className='break-words'>{cmd.replace("${origion}", origion)}</code>;
+  return <code className='break-words h-[25.5px]'>{origin ? cmd.replace("${origion}", origin) : ""}</code>;
 }
