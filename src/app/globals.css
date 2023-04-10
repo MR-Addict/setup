@@ -7,5 +7,5 @@ body {
   min-height: 100vh;
   min-height: 100svh;
   font-family: monospace;
-  @apply bg-black text-gray-300 flex flex-col items-center justify-start gap-5 p-2 md:p-5;
+  @apply flex flex-col items-center justify-between gap-5 p-5;
 }

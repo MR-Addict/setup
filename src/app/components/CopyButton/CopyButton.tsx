@@ -10,7 +10,7 @@ export default function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setCopied(false), 2000);
+    const timer = setTimeout(() => setCopied(false), 1000);
     return () => clearTimeout(timer);
   }, [copied]);
 
@@ -20,13 +20,7 @@ export default function CopyButton({ text }: { text: string }) {
   }
 
   return (
-    <button
-      type='button'
-      disabled={copied}
-      onClick={handleClick}
-      aria-label='Copy to Clipboard'
-      className='outline-none'
-    >
+    <button type='button' disabled={copied} onClick={handleClick} aria-label='Copy to Clipboard'>
       {copied ? <BiCheck size={16} /> : <VscCopy size={16} />}
     </button>
   );

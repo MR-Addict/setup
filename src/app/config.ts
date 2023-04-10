@@ -3,55 +3,60 @@ import env from "@/types/env";
 export interface ScriptType {
   name: string;
   path: string;
+  id: string;
   cmd: string;
 }
 
-const scripts: ScriptType[] = [
+const scripts = [
   {
     name: "Git",
     path: "git",
-    cmd: `curl -sL ${env.ORIGIN_URL}/api/git | bash`,
+    id: "2d6c51c433227720de5da1b83710aa90",
   },
   {
     name: "Clash",
     path: "clash",
-    cmd: `curl -sL ${env.ORIGIN_URL}/api/clash | bash`,
+    id: "406af2553eba7300940968c5f14fba2f",
   },
   {
     name: "Docker",
     path: "docker",
-    cmd: `curl -sL ${env.ORIGIN_URL}/api/docker | bash`,
+    id: "406af2553eba7300940968c5f14fba2f",
   },
   {
     name: "Vim",
     path: "vim",
-    cmd: `curl -sL ${env.ORIGIN_URL}/api/docker | bash`,
+    id: "406af2553eba7300940968c5f14fba2f",
   },
   {
     name: "Alias",
     path: "alias",
-    cmd: `curl -sL ${env.ORIGIN_URL}/api/docker | bash`,
+    id: "406af2553eba7300940968c5f14fba2f",
   },
   {
     name: "Grub",
     path: "grub",
-    cmd: `curl -sL ${env.ORIGIN_URL}/api/docker | bash`,
+    id: "406af2553eba7300940968c5f14fba2f",
   },
   {
     name: "Mdbook",
     path: "mdbook",
-    cmd: `curl -sL ${env.ORIGIN_URL}/api/docker | bash`,
+    id: "406af2553eba7300940968c5f14fba2f",
   },
   {
     name: "Oh-my-posh",
     path: "omp",
-    cmd: `curl -sL ${env.ORIGIN_URL}/api/docker | bash`,
+    id: "406af2553eba7300940968c5f14fba2f",
   },
   {
     name: "Powershell",
     path: "pwsh",
-    cmd: `curl -sL ${env.ORIGIN_URL}/api/docker | bash`,
+    id: "406af2553eba7300940968c5f14fba2f",
   },
 ];
 
-export default scripts;
+export default function getScripts(): ScriptType[] {
+  return scripts.map((script) => {
+    return { ...script, cmd: `curl -sL ${env.ORIGIN_URL}/api/${script.path} | bash` };
+  });
+}
