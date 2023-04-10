@@ -20,7 +20,12 @@ export default function ScriptCard({ script }: { script: ScriptType }) {
       </div>
 
       <div className='flex flex-col md:flex-row md:items-center justify-between py-2 px-3 border-t border-t-gray-300 bg-gray-100 rounded-b-md'>
-        <input disabled value={script.cmd} aria-label={script.path} className='w-full' />
+        <input
+          disabled
+          value={script.cmd}
+          aria-label={script.path}
+          className='w-full bg-none outline-none text-black'
+        />
 
         <CopyButton text={script.cmd} className='hidden md:block' />
       </div>

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import getScripts from "@/app/config";
-import serializeMDX from "@/lib/pre";
+import { serializeMDX } from "@/lib/pre";
 import { CodePreview } from "@/components";
 import { setMetadata } from "@/lib/utils";
 
