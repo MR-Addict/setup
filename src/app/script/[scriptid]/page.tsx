@@ -1,15 +1,19 @@
-import { Gist } from "@/components";
-import getScripts from "@/app/config";
-import { setMetadata } from "@/lib/utils";
 import { notFound } from "next/navigation";
 
-export default function Page({ params: { scriptid } }: { params: { scriptid: string } }) {
+import getScripts from "@/app/config";
+import serializeMDX from "@/lib/pre";
+import { CodePreview } from "@/components";
+import { setMetadata } from "@/lib/utils";
+
+export default async function Page({ params: { scriptid } }: { params: { scriptid: string } }) {
   const script = getScripts().find((script) => script.path === scriptid);
   if (!script) notFound();
 
+  const serializedMDX = await serializeMDX(script.path);
+
   return (
     <main className='w-full max-w-4xl flex-1 flex flex-col'>
-      <Gist owner='MR-Addict' id={script.id} height={590} />
+      <CodePreview serializedMDX={serializedMDX} />
     </main>
   );
 }

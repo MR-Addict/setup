@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import { copyToClipboard } from "@/lib/utils";
 
-export default function CopyButton({ text }: { text: string }) {
+export default function CopyButton({ text, ...rest }: { text: string | undefined } & React.ComponentProps<"button">) {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -15,12 +15,12 @@ export default function CopyButton({ text }: { text: string }) {
   }, [copied]);
 
   function handleClick() {
-    copyToClipboard(text);
+    copyToClipboard(text || "");
     setCopied(true);
   }
 
   return (
-    <button type='button' disabled={copied} onClick={handleClick} aria-label='Copy to Clipboard'>
+    <button {...rest} type='button' disabled={copied} onClick={handleClick} aria-label='Copy to Clipboard'>
       {copied ? <BiCheck size={16} /> : <VscCopy size={16} />}
     </button>
   );

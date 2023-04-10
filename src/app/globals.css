@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 body {
-  font-size: 17px;
   min-height: 100vh;
   min-height: 100svh;
-  font-family: monospace;
   @apply flex flex-col items-center justify-between gap-5 p-5;
+}
+
+.shadow {
+  box-shadow: 0 0 5px #80808040;
+  @apply border border-gray-300;
 }

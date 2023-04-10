@@ -1,4 +1,4 @@
-# Ubuntu Setup Scripts
+# Personal ubuntu Setup Scripts
 
 ## 1. Available Scripts
 
@@ -11,8 +11,6 @@
 - mdbook
 - omp(oh-my-posh)
 - pwsh(powershell)
-- others
-  - python-is-python3
 
 ## 2. Deploy
 

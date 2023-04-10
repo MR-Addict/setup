@@ -13,7 +13,7 @@ fi
 # 2. Config vim
 echo "[INFO] Configurating vim..."
 if [ ! -f /home/$USER/.vimrc ];then
-  wget -q https://setup.mraddict.top/config/vim/vimrc -O /home/$USER/.vimrc
+  wget -q ${ORIGIN_URL}/assets/vim/vimrc -O /home/$USER/.vimrc
 else
   echo "[WARN] You have already configurated vim in $USER!"
 fi

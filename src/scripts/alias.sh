@@ -3,7 +3,7 @@
 # Config alias
 echo "[INFO] Configurating alias..."
 if [ ! -f /home/$USER/.bash_aliases ];then
-  wget -q https://setup.mraddict.top/config/alias/bash_aliases -O /home/$USER/.bash_aliases
+  wget -q $ORIGIN_URL/asset/salias/bash_aliases -O /home/$USER/.bash_aliases
 else
   echo "[WARN] You have already configurate alias in $USER!"
 fi

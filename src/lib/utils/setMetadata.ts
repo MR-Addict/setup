@@ -1,6 +1,6 @@
 export default function setMetadata(title: string) {
   return {
     title: `${title}`,
-    description: "Ubuntu setup scripts",
+    description: "MR-Addict's ubuntu setup scripts",
   };
 }
