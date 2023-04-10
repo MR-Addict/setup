@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { CiLogin } from "react-icons/ci";
 
-import { CmdCode, CopyButton } from "./components";
 import { ScriptType } from "./config";
+import { CopyButton } from "./components";
 
 export default function ScriptCard({ script, index }: { script: ScriptType; index: number }) {
   return (
@@ -13,7 +13,7 @@ export default function ScriptCard({ script, index }: { script: ScriptType; inde
       </div>
 
       <div className='rounded-md px-2 py-1 bg-gray-500/30 border border-gray-500 flex flex-col md:flex-row md:items-center justify-between md:gap-5'>
-        <CmdCode cmd={script.cmd} />
+        <code className='break-words'>{script.cmd}</code>
 
         <div className='flex flex-row items-center gap-1'>
           <Link aria-label='script link' href={"/script/" + script.path}>
