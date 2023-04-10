@@ -19,6 +19,7 @@ export default function ScriptCard({ script, index }: { script: ScriptType; inde
           <Link aria-label='script link' href={"/script/" + script.path}>
             <CiLogin size={18} />
           </Link>
+
           <CopyButton text={script.cmd} />
         </div>
       </div>
