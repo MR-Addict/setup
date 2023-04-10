@@ -3,7 +3,7 @@
 # Config alias
 echo "[INFO] Configurating alias..."
 if [ ! -f /home/$USER/.bash_aliases ];then
-  wget -q $ORIGIN_URL/assets/salias/bash_aliases -O /home/$USER/.bash_aliases
+  wget -q $ORIGIN_URL/assets/alias/bash_aliases -O /home/$USER/.bash_aliases
 else
   echo "[WARN] You have already configurate alias in $USER!"
 fi
