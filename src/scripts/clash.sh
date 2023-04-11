@@ -3,8 +3,8 @@
 # 1. Install clash
 echo "[INFO] Installing clash..."
 if ! clash -v &>/dev/null;then
-  wget -q $ORIGIN_URL/assets/clash/clash-linux-amd64.zip -O clash.zip
-  unzip clash.zip 1>/dev/null
+  wget -q $ORIGIN_URL/assets/clash/clash-linux-amd64.gz -O clash.gz
+  gunzip clash.gz 1>/dev/null
   chmod u+x clash
   sudo mv clash /usr/local/bin
 else

@@ -14,7 +14,7 @@ function Scripts({ rootPath }: { rootPath: string }) {
         Script
       </button>
 
-      <ul className='z-10 invisible opacity-0 scale-95 origin-top group-hover:visible group-hover:opacity-100 group-hover:scale-100 delay-100 duration-300 absolute mt-0.5 left-1/2 -translate-x-1/2 py-2 px-4 bg-white rounded-md space-y-0.5 shadow'>
+      <ul className='z-10 invisible opacity-0 scale-95 origin-top group-hover:visible group-hover:opacity-100 group-hover:scale-100 delay-100 duration-300 absolute mt-0.5 left-1/2 -translate-x-1/2 py-3 px-5 bg-white rounded-md space-y-2.5 shadow'>
         {getScripts().map((script) => (
           <li key={script.path} className={classNames(style.link, "border-b")}>
             <Link href={"/script/" + script.path}>{script.name}</Link>

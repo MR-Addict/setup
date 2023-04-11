@@ -1,6 +1,6 @@
 "use client";
 
-import "./style/prism-ghcolors.css";
+import "./style/prism-vscode-light.css";
 import "./style/prism-line-numbers.css";
 import "./style/rehype-code-title.css";
 
