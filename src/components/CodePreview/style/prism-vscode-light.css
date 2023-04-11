@@ -11,7 +11,7 @@ pre[class*="language-"] {
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
-  line-height: 1.2em;
+  line-height: 1.15em;
 
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -24,7 +24,8 @@ pre[class*="language-"] {
 }
 
 pre > code[class*="language-"] {
-  font-size: 1em;
+  font-size: 0.9em;
+  font-weight: 600;
 }
 
 pre[class*="language-"]::-moz-selection,
