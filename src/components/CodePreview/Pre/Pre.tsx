@@ -11,7 +11,7 @@ export default function Pre(props: React.ComponentProps<"pre">) {
   return (
     <div className={style.container}>
       <pre {...props} ref={ref}>
-        <CopyButton text={ref.current?.innerText} className={style["copy-btn"]} />
+        <CopyButton text={ref} className={style["copy-btn"]} />
         {props.children}
       </pre>
     </div>

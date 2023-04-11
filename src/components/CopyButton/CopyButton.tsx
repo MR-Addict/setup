@@ -6,7 +6,11 @@ import { useEffect, useState } from "react";
 
 import { copyToClipboard } from "@/lib/utils";
 
-export default function CopyButton({ text, ...rest }: { text: string | undefined } & React.ComponentProps<"button">) {
+type Props = {
+  text: React.RefObject<HTMLPreElement> | string;
+} & React.ComponentProps<"button">;
+
+export default function CopyButton({ text, ...rest }: Props) {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -15,7 +19,8 @@ export default function CopyButton({ text, ...rest }: { text: string | undefined
   }, [copied]);
 
   function handleClick() {
-    copyToClipboard(text || "");
+    if (typeof text === "string") copyToClipboard(text);
+    else copyToClipboard(text.current?.innerText || "");
     setCopied(true);
   }
 
