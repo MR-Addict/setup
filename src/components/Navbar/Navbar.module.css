@@ -2,3 +2,12 @@
 .link.active {
   @apply text-blue-600;
 }
+
+.script ul {
+  @apply z-10 invisible opacity-0 scale-95 origin-top delay-100 duration-300 absolute mt-0.5 left-1/2 -translate-x-1/2 py-3 px-5 bg-white rounded-md space-y-2.5;
+}
+
+.script:focus-within ul,
+.script:hover ul {
+  @apply visible opacity-100 scale-100;
+}

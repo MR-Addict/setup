@@ -9,7 +9,7 @@ import style from "./Navbar.module.css";
 
 function Scripts({ rootPath }: { rootPath: string[] }) {
   return (
-    <li className='group'>
+    <li className={style.script}>
       <button
         type='button'
         className={classNames(style.link, rootPath.slice(0, 2).join("/") === "/script" ? style.active : "", "relative")}
@@ -17,7 +17,7 @@ function Scripts({ rootPath }: { rootPath: string[] }) {
         Script
       </button>
 
-      <ul className='z-10 invisible opacity-0 scale-95 origin-top group-hover:visible group-hover:opacity-100 group-hover:scale-100 delay-100 duration-300 absolute mt-0.5 left-1/2 -translate-x-1/2 py-3 px-5 bg-white rounded-md space-y-2.5 shadow'>
+      <ul className='shadow'>
         {getScripts().map((script) => (
           <li
             key={script.path}
