@@ -12,7 +12,7 @@ export default async function Page({ params: { scriptid } }: { params: { scripti
   const serializedMDX = await serializeMDX(script.path);
 
   return (
-    <main className='w-full max-w-4xl flex-1 flex flex-col'>
+    <main className="w-full max-w-4xl flex-1 flex flex-col">
       <CodePreview serializedMDX={serializedMDX} />
     </main>
   );

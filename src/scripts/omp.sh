@@ -10,8 +10,8 @@ else
 fi
 
 # 2. Istall hack fonts
-echo "[INFO] Installing hack fonts..."
-sudo apt-get -y install fonts-hack-ttf 1>/dev/null
+# echo "[INFO] Installing hack fonts..."
+# sudo apt-get -y install fonts-hack-ttf 1>/dev/null
 
 # 3. Install themes
 echo "[INFO] Installing oh-my-posh themes..."

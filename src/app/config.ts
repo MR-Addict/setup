@@ -13,7 +13,7 @@ const scripts = [
   { name: "Mdbook", path: "mdbook" },
   { name: "Oh-my-posh", path: "omp" },
   { name: "Powershell", path: "pwsh" },
-  { name: "Vim", path: "vim" },
+  { name: "Vim", path: "vim" }
 ];
 
 export default function getScripts(): ScriptType[] {

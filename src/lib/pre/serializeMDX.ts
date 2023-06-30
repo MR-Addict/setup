@@ -10,7 +10,7 @@ export default async function serializeMDX(id: string) {
 
   const markdown = `\`\`\`sh:${id}.sh\n${fileContent}${fileContent.endsWith("\n") ? "" : "\n"}\`\`\``;
   const serializedMDX: MDXRemoteSerializeResult = await serialize(markdown, {
-    mdxOptions: { rehypePlugins: [rehypeCodeTitles, [rehypePrism, { showLineNumbers: true, ignoreMissing: true }]] },
+    mdxOptions: { rehypePlugins: [rehypeCodeTitles, [rehypePrism, { showLineNumbers: true, ignoreMissing: true }]] }
   });
 
   return serializedMDX;

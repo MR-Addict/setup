@@ -8,8 +8,8 @@ export default function Page() {
   const scripts = getScripts();
 
   return (
-    <main className='w-full max-w-4xl'>
-      <ul className='w-full flex flex-col gap-7'>
+    <main className="w-full max-w-4xl">
+      <ul className="w-full flex flex-col gap-7">
         {scripts.map((script) => (
           <ScriptCard key={script.name} script={script} />
         ))}
