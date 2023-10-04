@@ -1,8 +1,8 @@
 #! /bin/bash
 
 # 1. Install powershell
-echo "[INFO] Installing powershell..."
 if ! command -v pwsh &>/dev/null ;then
+  echo "[INFO] Installing powershell..."
   [! -d /home/$USER/Powershell ] && mkdir /home/$USER/Powershell
   wget -q https://github.com/PowerShell/PowerShell/releases/download/v7.2.5/powershell-7.2.5-linux-x64.tar.gz -O /home/$USER/Powershell/powershell.tar.gz
   tar -zxf /home/$USER/Powershell/powershell.tar.gz -C /home/$USER/Powershell

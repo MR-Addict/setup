@@ -1,8 +1,8 @@
 #! /bin/bash
 
 # 1. Install git
-echo "[INFO] Installing git..."
 if ! command -v git &>/dev/null ;then
+  echo "[INFO] Installing git..."
   sudo apt-get install git -y 1>/dev/null
 else
   echo "[WARN] You have already installed git!"
