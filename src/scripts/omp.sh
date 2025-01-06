@@ -36,13 +36,13 @@ fi
 # 4. Config bash
 if ! grep -q oh-my-posh /home/$USER/.bashrc ;then
   echo "[INFO] Configurating oh-my-posh for bash..."
-  sed -i "$ a\eval \"\$(oh-my-posh --init --shell bash --config /home/$USER/.poshthemes/paradox.omp.json)\"" /home/$USER/.bashrc
+  sed -i "$ a\eval \"\$(oh-my-posh --init --shell bash --config /home/$USER/.poshthemes/amro.omp.json)\"" /home/$USER/.bashrc
 else
   echo "[WARN] You have already configurated oh-my-posh for $USER!"
 fi
 
 if ! sudo grep -q oh-my-posh /root/.bashrc ;then
-  sudo sed -i "$ a\eval \"\$(oh-my-posh --init --shell bash --config /home/$USER/.poshthemes/paradox.omp.json)\"" /root/.bashrc
+  sudo sed -i "$ a\eval \"\$(oh-my-posh --init --shell bash --config /home/$USER/.poshthemes/amro.omp.json)\"" /root/.bashrc
 else
   echo "[WARN] You have already configurated oh-my-posh for root!"
 fi

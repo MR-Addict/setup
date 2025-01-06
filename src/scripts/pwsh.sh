@@ -17,6 +17,6 @@ if [ ! -f /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1 ];then
   wget -q $ORIGIN_URL/assets/pwsh/Microsoft.PowerShell_profile.ps1 -O /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
   if ! command -v oh-my-posh &>/dev/null ;then
     sed -i "$ a\# Init Oh-my-posh" /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
-    sed -i "$ a\oh-my-posh --init --shell pwsh --config /home/$USER/.poshthemes/paradox.omp.json | Invoke-Expression" /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
+    sed -i "$ a\oh-my-posh --init --shell pwsh --config /home/$USER/.poshthemes/amro.omp.json | Invoke-Expression" /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
   fi
 fi
