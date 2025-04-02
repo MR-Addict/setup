@@ -53,15 +53,15 @@ function getScript(id: string) {
 
 export const scripts: ScriptType[] = (() => {
   const data: ScriptPropertyType[] = [
-    { id: "alias", name: "Alias", description: "Personal terminal aliases for linux." },
-    { id: "clash", name: "Clash", description: "Proxy server, clash core." },
-    { id: "docker", name: "Docker", description: "Docker and docker-compose." },
-    { id: "git", name: "Git", description: "Personal git configuration." },
-    { id: "grub", name: "Grub", description: "Grub configuration." },
-    { id: "mdbook", name: "Mdbook", description: "Markdown static documentation generation tool." },
-    { id: "omp", name: "Oh my posh", description: "Prompt theme engine." },
-    { id: "pwsh", name: "Powershell", description: "PowerShell 7 for linux." },
-    { id: "vim", name: "Vim", description: "Personal vim configuration." }
+    { id: "clash", name: "Clash", description: "Proxy server, clash core" },
+    { id: "alias", name: "Alias", description: "Personal terminal aliases for linux" },
+    { id: "vim", name: "Vim", description: "Personal vim configuration" },
+    { id: "omp", name: "Oh my posh", description: "Prompt theme engine" },
+    { id: "git", name: "Git", description: "Personal git configuration" },
+    { id: "docker", name: "Docker", description: "Docker and docker-compose" },
+    { id: "mdbook", name: "Mdbook", description: "Markdown documentation generation tool" },
+    { id: "pwsh", name: "Powershell", description: "PowerShell 7 for linux" },
+    { id: "grub", name: "Grub", description: "Grub configuration" }
   ];
 
   return data.map((script) => {

@@ -6,5 +6,5 @@ alias shutdown="sudo shutdown -h now"
 
 alias git-clean="git restore . && git clean -f"
 alias docker-clean="docker system prune -a -f"
-alias apt-update="sudo apt-get update && sudo NEEDRESTART_MODE=a apt-get dist-upgrade -y"
+alias apt-update="sudo apt-get update && sudo apt-get dist-upgrade -y"
 alias apt-clean="sudo apt-get autoremove -y && sudo apt-get clean -y"

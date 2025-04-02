@@ -12,4 +12,6 @@ fi
 echo "[INFO] Configurating git..."
 git config --global user.name Cael
 git config --global user.email MR-Addict@qq.com
+git config --global http.proxy http://127.0.0.1:7890
+git config --global https.proxy http://127.0.0.1:7890
 git config --global init.defaultBranch main

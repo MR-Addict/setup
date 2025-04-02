@@ -6,15 +6,15 @@ If you want to use them, you can **double** check the scripts by view the its co
 
 ## 1. Available Scripts
 
-- git
-- vim
-- grub
-- alias
 - clash
+- alias
+- vim
+- omp(oh-my-posh)
+- git
 - docker
 - mdbook
-- omp(oh-my-posh)
 - pwsh(powershell)
+- grub
 
 ## 2. Deploy
 

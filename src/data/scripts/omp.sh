@@ -4,8 +4,6 @@
 if ! command -v unzip &>/dev/null ;then
   echo "[INFO] Installing unzip..."
   sudo apt install unzip -y &>/dev/null
-else
-  echo "[WARN] You have already installed oh-my-posh!"
 fi
 
 # 1. Install omp
