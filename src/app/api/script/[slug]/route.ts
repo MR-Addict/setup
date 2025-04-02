@@ -6,3 +6,7 @@ export function GET(req: Request, { params: { slug } }: { params: { slug: string
 
   return new Response(script.shell, { status: 200 });
 }
+
+export function generateStaticParams() {
+  return scripts.map((script) => ({ slug: script.id }));
+}

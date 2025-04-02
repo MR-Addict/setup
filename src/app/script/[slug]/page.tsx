@@ -12,7 +12,7 @@ const generateMarkdown = (script: ScriptType) => {
 
 # ${script.name}
 
-${script.description}
+${script.description}.
 
 You can install this script by running the following command in your terminal.
 
