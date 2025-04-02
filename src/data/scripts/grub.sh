@@ -3,7 +3,7 @@
 count="false"
 
 # 1. Update grub timeout
-if ! sudo grep -q GRUB_TIMEOUT=0 /etc/default/grub ;then
+if ! sudo grep -q GRUB_TIMEOUT=0 /etc/default/grub ; then
   echo "[INFO] Updating grub timeout..."
   sudo sed -i 's/GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' /etc/default/grub
   count="true"
@@ -13,7 +13,7 @@ fi
 
 # 2. Disable timeout adjust
 lastLine=$( sudo tail -n 1 /etc/grub.d/30_os-prober )
-if [ "$lastLine" = "adjust_timeout" ] ;then
+if [ "$lastLine" = "adjust_timeout" ] ; then
   echo "[INFO] Disabling adjust timeout..."
   sudo sed -i '$ d' /etc/grub.d/30_os-prober
   sudo sed -i '$ a\#adjust_timeout' /etc/grub.d/30_os-prober
@@ -23,7 +23,7 @@ else
 fi
 
 # 3. Update grub
-if [ "$count" = "true" ] ;then
+if [ "$count" = "true" ] ; then
   echo "[INFO] Updating grub..."
   sudo update-grub &>/dev/null
 else

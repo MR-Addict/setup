@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # 1. Install git
-if ! command -v git &>/dev/null ;then
+if ! command -v git &>/dev/null ; then
   echo "[INFO] Installing git..."
   sudo apt-get install git -y 1>/dev/null
 else
