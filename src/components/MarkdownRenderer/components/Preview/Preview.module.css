@@ -13,14 +13,10 @@
   & .btn {
     @apply p-1 rounded-md text-neutral-400;
     @apply duration-300 scale-50 opacity-0 invisible;
-
-    &:hover {
-      @apply bg-neutral-400/30;
-    }
   }
 }
 
 .btn:disabled,
 .wrapper:hover .btn {
-  @apply scale-100 opacity-100 visible;
+  @apply scale-100 opacity-100 visible bg-neutral-700;
 }
