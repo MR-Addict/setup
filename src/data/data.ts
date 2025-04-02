@@ -67,7 +67,7 @@ export const scripts: ScriptType[] = (() => {
   return data.map((script) => {
     const url = `${env.HOST}/api/script/${script.id}`;
     const urlCmd = `curl -sL ${url} | bash`;
-    const shell = getScript(script.id);
+    const shell = getScript(script.id).replace("$HOST", env.HOST);
     return { ...script, url, urlCmd, shell };
   });
 })();

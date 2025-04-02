@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PiShare } from "react-icons/pi";
+import { LiaFileAlt } from "react-icons/lia";
 
 import style from "./page.module.css";
 import { scripts } from "@/data/data";
@@ -37,9 +38,12 @@ export default function Page() {
                 <Link href={`/script/${script.id}`} className={style.link} />
                 <div className={style.actions}>
                   <CopyButton text={script.urlCmd} title="Copy install command" />
-                  <Link href={`/script/${script.id}`} title="Open the script">
+                  <a href={`/api/script/${script.id}`} title="Download script" download={`${script.id}.sh`}>
+                    <LiaFileAlt />
+                  </a>
+                  <a href={`/api/script/${script.id}`} title="View script" target="_blank">
                     <PiShare />
-                  </Link>
+                  </a>
                 </div>
               </td>
             </tr>

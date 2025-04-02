@@ -11,7 +11,7 @@ fi
 # 2. Config vim
 if [ ! -f /home/$USER/.vimrc ];then
   echo "[INFO] Configurating vim for $USER..."
-  wget -q $ORIGIN_URL/assets/vim/vimrc -O /home/$USER/.vimrc
+  wget -q $HOST/assets/vim/vimrc -O /home/$USER/.vimrc
 else
   echo "[WARN] You have already configurated vim in $USER!"
 fi

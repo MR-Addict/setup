@@ -3,7 +3,7 @@
 # 1. Install clash
 if ! clash -v &>/dev/null;then
   echo "[INFO] Installing clash..."
-  wget -q $ORIGIN_URL/assets/clash/clash-linux-amd64.gz -O clash.gz
+  wget -q $HOST/assets/clash/clash-linux-amd64.gz -O clash.gz
   gunzip clash.gz 1>/dev/null
   chmod u+x clash
   sudo mv clash /usr/local/bin
@@ -15,7 +15,7 @@ fi
 if ! clash -t &>/dev/null;then
   echo "[INFO] Configurating clash..."
   [ ! -d /home/$USER/.config/clash ] && mkdir /home/$USER/.config/clash
-  wget -q $ORIGIN_URL/assets/clash/Country.zip -O Country.zip
+  wget -q $HOST/assets/clash/Country.zip -O Country.zip
   unzip -q -o Country.zip -d /home/$USER/.config/clash && rm clash.zip
 else
   echo "[WARN] You have already configurated clash!"
