@@ -1,0 +1,15 @@
+[Unit]
+After=network.target
+Description=clash
+StartLimitBurst=5
+StartLimitIntervalSec=100
+
+[Service]
+Type=simple
+User=ubuntu
+Restart=always
+RestartSec=1
+ExecStart=/usr/local/bin/clash
+
+[Install]
+WantedBy=multi-user.target

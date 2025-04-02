@@ -51,14 +51,12 @@ else
   echo "[WARN] You have already configurated proxy for apt!"
 fi
 
-# 6. Config crontab
-echo "[INFO] Adding a startup schedule for clash..."
-if ! crontab -l &>/dev/null;then
-  (crontab -l 2>/dev/null; echo "@reboot /usr/local/bin/clash") | crontab -
+# 6. Add systemd service
+echo "[INFO] Adding systemd service for clash..."
+if [ ! -f /etc/systemd/system/clash.service ]; then
+  sudo wget -q $HOST/assets/clash/clash.service -O /etc/systemd/system/clash.service
+  sudo systemctl enable clash.service 1>/dev/null
+  sudo systemctl start clash.service 1>/dev/null
 else
-  if ! crontab -l|grep -q /usr/local/bin/clash;then
-    (crontab -l 2>/dev/null; echo "@reboot /usr/local/bin/clash") | crontab -
-  else
-    echo "[WARN] You have already add reboot schedule for clash!"
-  fi
+  echo "[WARN] You have already added systemd service for clash!"
 fi
