@@ -1,9 +1,5 @@
 /* https://github.com/timlrx/rehype-prism-plus#styling */
 
-pre {
-  overflow-x: auto;
-}
-
 /**
  * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
  * 1. Make the element just wide enough to fit its content.
@@ -11,9 +7,7 @@ pre {
  */
 .code-highlight {
   float: left; /* 1 */
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+  min-width: 100%; /* 2 */
 }
 
 .code-line {

@@ -1,19 +1,51 @@
-import getScripts from "./config";
-import ScriptCard from "./ScriptCard";
-import { setMetadata } from "@/lib/utils";
+import Link from "next/link";
+import { PiShare } from "react-icons/pi";
 
-export const metadata = setMetadata("Setup");
+import style from "./page.module.css";
+import { scripts } from "@/data/data";
+
+import CopyButton from "@/components/CopyButton/CopyButton";
 
 export default function Page() {
-  const scripts = getScripts();
-
   return (
-    <main className="w-full max-w-4xl">
-      <ul className="w-full flex flex-col gap-7">
-        {scripts.map((script) => (
-          <ScriptCard key={script.name} script={script} />
-        ))}
-      </ul>
+    <main className={style.wrapper}>
+      <header className={style.header}>
+        <h1>Setup scripts</h1>
+
+        <p>
+          This is a collection of <strong>personal</strong> scripts that I used to set up my ubuntu machine environment
+          quickly and easily. If you want to use them, you can <strong>double</strong> check the scripts by view the its
+          content and make sure they are safe to use.
+        </p>
+      </header>
+
+      <table className={style.table}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {scripts.map((script) => (
+            <tr key={script.name}>
+              <td>{script.name}</td>
+              <td>{script.description}</td>
+              <td>
+                <Link href={`/script/${script.id}`} className={style.link} />
+                <div className={style.actions}>
+                  <CopyButton text={script.urlCmd} title="Copy install command" />
+                  <Link href={`/script/${script.id}`} title="Open the script">
+                    <PiShare />
+                  </Link>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </main>
   );
 }

@@ -1,0 +1,7 @@
+.wrapper {
+  @apply w-full text-center p-4 mt-auto text-neutral-400;
+
+  & a {
+    @apply underline;
+  }
+}

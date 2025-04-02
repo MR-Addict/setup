@@ -1,8 +1,0 @@
-.container {
-  @apply relative;
-}
-
-/* copy button */
-.copy-btn {
-  @apply absolute -top-[30px] right-3;
-}

@@ -1,0 +1,77 @@
+.markdown {
+  scrollbar-color: #737373 #1d1f21; /* thumb color, track color */
+
+  @apply isolate text-neutral-300;
+
+  h1 {
+    @apply text-xl text-neutral-100;
+  }
+
+  h2 {
+    @apply text-lg text-neutral-200;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    @apply font-bold mt-4;
+  }
+
+  ul {
+    @apply mt-4;
+  }
+
+  li {
+    @apply my-0.5 list-disc list-inside;
+  }
+
+  p {
+    @apply mt-4;
+  }
+
+  a {
+    @apply text-teal-600 underline;
+  }
+
+  table {
+    @apply w-full mt-4 rounded-sm outline outline-1 outline-neutral-600;
+
+    tbody tr {
+      @apply border-t border-t-neutral-600;
+    }
+
+    :is(td, th) {
+      @apply px-3 py-2 text-left;
+    }
+
+    :is(th, td):not(:last-child) {
+      @apply border-r border-neutral-600;
+    }
+  }
+
+  pre:has(.code-highlight) {
+    @apply mt-4;
+  }
+
+  blockquote {
+    @apply mt-4 border-l-4 border-l-teal-600 pl-5 py-2 pr-2 rounded-md bg-neutral-400/20;
+  }
+
+  hr {
+    @apply mt-4;
+  }
+
+  code:not([class]) {
+    @apply mx-0.5 px-1 py-0.5 bg-neutral-400/10 rounded-sm text-sm;
+  }
+
+  img {
+    @apply min-h-10 w-full max-w-6xl rounded-xl mx-auto mt-4;
+  }
+
+  .contains-task-list li {
+    @apply list-none;
+
+    & input {
+      @apply w-4 h-4;
+    }
+  }
+}

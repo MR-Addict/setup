@@ -1,12 +1,14 @@
 import "./globals.css";
+import setMetadata from "@/lib/utils/setMetadata";
 
-import { Navbar, Footer } from "@/components";
+import Footer from "@/components/Footer/Footer";
+
+export const metadata = setMetadata();
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <Navbar />
         {children}
         <Footer />
       </body>

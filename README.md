@@ -1,4 +1,8 @@
-# Personal ubuntu Setup Scripts
+# Setup Scripts
+
+This is a collection of **personal** scripts that I used to set up my ubuntu machine environment quickly and easily.
+
+If you want to use them, you can **double** check the scripts by view the its content and make sure they are safe to use.
 
 ## 1. Available Scripts
 

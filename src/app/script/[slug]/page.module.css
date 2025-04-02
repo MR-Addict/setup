@@ -1,0 +1,7 @@
+.wrapper {
+  @apply w-full overflow-x-auto p-4 sm:p-6 lg:p-8 xl:p-10 2xl:p-12;
+}
+
+.markdown {
+  @apply w-full max-w-5xl mx-auto;
+}
