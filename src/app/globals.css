@@ -5,6 +5,7 @@
 body {
   min-height: 100vh;
   min-height: 100svh;
+  scrollbar-color: #737373 #000; /* thumb color, track color */
 
   @apply flex flex-col bg-black text-white;
 }

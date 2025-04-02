@@ -20,36 +20,38 @@ export default function Page() {
         </p>
       </header>
 
-      <table className={style.table}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {scripts.map((script) => (
-            <tr key={script.name}>
-              <td>{script.name}</td>
-              <td>{script.description}</td>
-              <td>
-                <Link href={`/script/${script.id}`} className={style.link} />
-                <div className={style.actions}>
-                  <CopyButton text={script.urlCmd} title="Copy install command" />
-                  <a href={`/api/script/${script.id}`} title="Download script" download={`${script.id}.sh`}>
-                    <LiaFileAlt />
-                  </a>
-                  <a href={`/api/script/${script.id}`} title="View script" target="_blank">
-                    <PiShare />
-                  </a>
-                </div>
-              </td>
+      <div className="max-w-full overflow-x-auto">
+        <table className={style.table}>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {scripts.map((script) => (
+              <tr key={script.name}>
+                <td>{script.name}</td>
+                <td>{script.description}</td>
+                <td className="min-w-24 h-full">
+                  <Link href={`/script/${script.id}`} className={style.link} />
+                  <div className={style.actions}>
+                    <CopyButton text={script.urlCmd} title="Copy install command" />
+                    <a href={`/api/script/${script.id}`} title="Download script" download={`${script.id}.sh`}>
+                      <LiaFileAlt />
+                    </a>
+                    <a href={`/api/script/${script.id}`} title="View script" target="_blank">
+                      <PiShare />
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </main>
   );
 }

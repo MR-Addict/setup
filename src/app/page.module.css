@@ -22,7 +22,7 @@
   }
 
   & :is(th, td) {
-    @apply py-3 px-2 text-left;
+    @apply py-3 px-2 text-left whitespace-nowrap;
   }
 
   & tr {

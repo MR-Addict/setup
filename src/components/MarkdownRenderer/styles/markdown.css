@@ -28,7 +28,7 @@
   }
 
   a {
-    @apply text-teal-600 underline;
+    @apply text-teal-600 underline whitespace-break-spaces;
   }
 
   table {
