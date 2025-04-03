@@ -27,17 +27,17 @@ export default function Page() {
               <th>Name</th>
               <th>Description</th>
               <th>Actions</th>
+              <th />
             </tr>
           </thead>
 
           <tbody>
             {scripts.map((script) => (
-              <tr key={script.name}>
+              <tr key={script.id}>
                 <td>{script.name}</td>
                 <td>{script.description}</td>
-                <td className="min-w-24 h-full">
-                  <Link href={`/script/${script.id}`} className={style.link} />
-                  <div className={style.actions}>
+                <td className={style.actions}>
+                  <div>
                     <CopyButton text={script.urlCmd} title="Copy install command" />
                     <a href={`/api/script/${script.id}`} title="Download script" download={`${script.id}.sh`}>
                       <LiaFileAlt />
@@ -46,6 +46,9 @@ export default function Page() {
                       <PiShare />
                     </a>
                   </div>
+                </td>
+                <td>
+                  <Link href={`/script/${script.id}`} className={style.link} />
                 </td>
               </tr>
             ))}
