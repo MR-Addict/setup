@@ -26,6 +26,15 @@ export const env = (() => {
      * @see https://vercel.com/docs/environment-variables/system-environment-variables
      */
     if (process.env.VERCEL_PROJECT_PRODUCTION_URL) HOST = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+
+    /**
+     * Check if in Github actions enviroment
+     * @see https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables#default-environment-variables
+     */
+    if (process.env.GITHUB_REPOSITORY) {
+      const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
+      HOST = `https://${owner}.github.io/${repo}`;
+    }
   }
 
   /**

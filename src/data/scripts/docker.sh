@@ -18,3 +18,14 @@ if ! command -v docker-compose &>/dev/null ; then
 else
   echo "[WARN] You have installed docker-compose!"
 fi
+
+# 3. Setup proxy
+echo "[INFO] Configurated proxy for docker!"
+if [ ! -f /etc/systemd/system/docker.service.d/proxy.conf ] ; then
+  sudo mkdir -p /etc/systemd/system/docker.service.d
+  sudo wget -q $HOST/assets/docker/proxy.conf -O /etc/systemd/system/docker.service.d/proxy.conf
+  sudo systemctl daemon-reload
+  sudo systemctl restart docker.service
+else
+  echo "[WARN] You have already configurated proxy for docker!"
+fi
