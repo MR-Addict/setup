@@ -28,7 +28,7 @@ ${script.shell}
 `.trim();
 };
 
-export default async function Page({ params: { slug } }: { params: { slug: string } }) {
+export default function Page({ params: { slug } }: { params: { slug: string } }) {
   const script = scripts.find((script) => script.id === slug);
   if (!script) return notFound();
 
