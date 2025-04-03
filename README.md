@@ -12,6 +12,7 @@ If you want to use them, you can **double** check the scripts by view the its co
 - omp(oh-my-posh)
 - git
 - docker
+- nvm
 - mdbook
 - pwsh(powershell)
 - grub

@@ -59,6 +59,7 @@ export const scripts: ScriptType[] = (() => {
     { id: "omp", name: "Oh my posh", description: "Prompt theme engine" },
     { id: "git", name: "Git", description: "Personal git configuration" },
     { id: "docker", name: "Docker", description: "Docker and docker-compose" },
+    { id: "nvm", name: "NVM", description: "Node version manager" },
     { id: "mdbook", name: "Mdbook", description: "Markdown documentation generation tool" },
     { id: "pwsh", name: "Powershell", description: "PowerShell 7 for linux" },
     { id: "grub", name: "Grub", description: "Grub configuration" }

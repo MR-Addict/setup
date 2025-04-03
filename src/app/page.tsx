@@ -38,13 +38,13 @@ export default function Page() {
                 <td>{script.description}</td>
                 <td className={style.actions}>
                   <div>
-                    <CopyButton text={script.urlCmd} title="Copy install command" />
-                    <a href={`/api/script/${script.id}`} title="Download script" download={`${script.id}.sh`}>
+                    <CopyButton text={script.urlCmd} title="Copy install command" className={style.btn} />
+                    <Link className={style.btn} title="Script details" href={`/script/${script.id}`}>
                       <LiaFileAlt />
-                    </a>
-                    <a href={`/api/script/${script.id}`} title="View script" target="_blank">
+                    </Link>
+                    <Link className={style.btn} title="View script" href={`/api/script/${script.id}`} target="_blank">
                       <PiShare />
-                    </a>
+                    </Link>
                   </div>
                 </td>
                 <td>

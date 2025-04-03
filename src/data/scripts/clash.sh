@@ -56,7 +56,6 @@ if [ ! -f /etc/systemd/system/clash.service ] ; then
   echo "[INFO] Adding systemd service for clash..."
   sudo wget -q $HOST/assets/clash/clash.service -O /etc/systemd/system/clash.service
   sudo systemctl enable clash.service 1>/dev/null
-  sudo systemctl start clash.service 1>/dev/null
 else
   echo "[WARN] You have already added systemd service for clash!"
 fi
