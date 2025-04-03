@@ -8,9 +8,9 @@ import { useEffect, useState } from "react";
 import style from "../../Preview.module.css";
 import copyToClipboard from "@/lib/utils/copyToClipboard";
 
-type Props = { text: string } & React.ComponentProps<"button">;
+type Props = { preRef: React.RefObject<HTMLPreElement> } & React.ComponentProps<"button">;
 
-export default function CopyButton({ text, ...rest }: Props) {
+export default function CopyButton({ preRef, ...rest }: Props) {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,9 @@ export default function CopyButton({ text, ...rest }: Props) {
   }, [copied]);
 
   function handleClick() {
-    if (copyToClipboard(text)) setCopied(true);
+    const text = preRef.current?.innerText.replaceAll("\n\n", "\n");
+    if (text && copyToClipboard(text)) setCopied(true);
+    else alert("Current environment does not support copying to clipboard.");
   }
 
   return (

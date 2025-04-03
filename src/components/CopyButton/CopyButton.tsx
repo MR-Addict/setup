@@ -18,6 +18,7 @@ export default function CopyButton({ text, ...rest }: Props) {
 
   function handleClick() {
     if (copyToClipboard(text)) setCopied(true);
+    else alert("Current environment does not support copying to clipboard.");
   }
 
   return (

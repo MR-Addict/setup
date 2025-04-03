@@ -20,8 +20,8 @@ else
 fi
 
 # 3. Setup proxy
-echo "[INFO] Configurated proxy for docker!"
 if [ ! -f /etc/systemd/system/docker.service.d/proxy.conf ] ; then
+  echo "[INFO] Configurated proxy for docker!"
   sudo mkdir -p /etc/systemd/system/docker.service.d
   sudo wget -q $HOST/assets/docker/proxy.conf -O /etc/systemd/system/docker.service.d/proxy.conf
   sudo systemctl daemon-reload
