@@ -1,0 +1,45 @@
+2:I[4103,["614","static/chunks/3d47b92a-6499e99d81983fb8.js","217","static/chunks/578c2090-33ed7ec70183ad2b.js","675","static/chunks/b563f954-6f61a5a1739a382d.js","822","static/chunks/822-bbb08e393be4e3a7.js","709","static/chunks/709-907ef2af245c8a5e.js","957","static/chunks/app/script/%5Bslug%5D/page-832c430773ff439e.js"],"default"]
+4:I[4707,[],""]
+6:I[6423,[],""]
+7:I[8188,["185","static/chunks/app/layout-f68d4d4eb214a679.js"],"default"]
+3:T626,[Back](/)
+
+# Powershell
+
+PowerShell 7 for linux.
+
+You can install this script by running the following command in your terminal.
+
+```sh
+curl -sL https://MR-Addict.github.io/setup/api/script/pwsh | bash
+```
+
+Below is the raw script content, which you can also get from the command above from the api https://MR-Addict.github.io/setup/api/script/pwsh.
+
+```sh
+#! /bin/bash
+
+# 1. Install powershell
+if ! command -v pwsh &>/dev/null ; then
+  echo "[INFO] Installing powershell..."
+  [! -d /home/$USER/Powershell ] && mkdir /home/$USER/Powershell
+  wget -q https://github.com/PowerShell/PowerShell/releases/download/v7.2.5/powershell-7.2.5-linux-x64.tar.gz -O /home/$USER/Powershell/powershell.tar.gz
+  tar -zxf /home/$USER/Powershell/powershell.tar.gz -C /home/$USER/Powershell
+  sudo ln -sf /home/$USER/Powershell/pwsh /usr/bin/pwsh
+else
+  echo "[WARN] You have already installed powershell!"
+fi
+
+# 2. Config Powershell
+if [ ! -f /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1 ] ; then
+  [ ! -d /home/$USER/.config/powershell ] && mkdir /home/$USER/.config/powershell
+  wget -q https://MR-Addict.github.io/setup/assets/pwsh/Microsoft.PowerShell_profile.ps1 -O /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
+  if ! command -v oh-my-posh &>/dev/null ; then
+    sed -i "$ a\# Init Oh-my-posh" /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
+    sed -i "$ a\oh-my-posh --init --shell pwsh --config /home/$USER/.poshthemes/amro.omp.json | Invoke-Expression" /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
+  fi
+fi
+```5:["slug","pwsh","d"]
+0:["WNpG75GxcwA5EujIBCKZ2",[[["",{"children":["script",{"children":[["slug","pwsh","d"],{"children":["__PAGE__?{\"slug\":\"pwsh\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["script",{"children":[["slug","pwsh","d"],{"children":["__PAGE__",{},[["$L1",["$","main",null,{"className":"page_wrapper__LhHMi","children":["$","$L2",null,{"content":"$3","className":"page_markdown__yCx0Y"}]}],[["$","link","0",{"rel":"stylesheet","href":"/setup/_next/static/css/737637c1ca630854.css","precedence":"next","crossOrigin":"$undefined"}]]],null],null]},[null,["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children","script","children","$5","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children","script","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/setup/_next/static/css/0612c454251b2fd2.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":[["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],["$","$L7",null,{}]]}]}]],null],null],["$L8",null]]]]
+8:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Powershell • Setup"}],["$","meta","3",{"name":"description","content":"MR-Addict's ubuntu setup scripts"}],["$","link","4",{"rel":"icon","href":"/setup/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+1:null
