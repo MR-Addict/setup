@@ -60,7 +60,7 @@ export const scripts: ScriptType[] = (() => {
     { id: "git", name: "Git", description: "Personal git configuration" },
     { id: "docker", name: "Docker", description: "Docker and docker-compose" },
     { id: "nvm", name: "NVM", description: "Node version manager" },
-    { id: "mdbook", name: "Mdbook", description: "Markdown documentation generation tool" },
+    { id: "mdbook", name: "MDbook", description: "Markdown documentation generation tool" },
     { id: "pwsh", name: "Powershell", description: "PowerShell 7 for linux" },
     { id: "grub", name: "Grub", description: "Grub configuration" }
   ];
@@ -68,7 +68,7 @@ export const scripts: ScriptType[] = (() => {
   return data.map((script) => {
     const url = `${env.HOST}/api/script/${script.id}`;
     const urlCmd = `curl -sL ${url} | bash`;
-    const shell = getScript(script.id).replace("$HOST", env.HOST);
+    const shell = getScript(script.id).replaceAll("$HOST", env.HOST);
     return { ...script, url, urlCmd, shell };
   });
 })();

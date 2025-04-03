@@ -11,7 +11,6 @@ if ! command -v mdbook &>/dev/null ; then
 else
   echo "[WARN] You have already installed mdbook!"
 fi
-echo "[INFO] Installing mdbook-admonish..."
 
 # 2. Install mdbook-admonish
 if ! command -v mdbook-admonish &>/dev/null ; then

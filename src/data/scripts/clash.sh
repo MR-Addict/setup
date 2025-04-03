@@ -3,8 +3,7 @@
 # 1. Install clash
 if ! clash -v &>/dev/null; then
   echo "[INFO] Installing clash..."
-  wget -q $HOST/assets/clash/clash-linux-amd64.gz -O clash.gz
-  gunzip clash.gz 1>/dev/null
+  wget -q $HOST/assets/clash/clash -O clash
   chmod u+x clash
   sudo mv clash /usr/local/bin
 else
@@ -15,8 +14,7 @@ fi
 if ! clash -t &>/dev/null; then
   echo "[INFO] Configurating clash..."
   [ ! -d /home/$USER/.config/clash ] && mkdir /home/$USER/.config/clash
-  wget -q $HOST/assets/clash/Country.zip -O Country.zip
-  unzip -q -o Country.zip -d /home/$USER/.config/clash && rm clash.zip
+  wget -q $HOST/assets/clash/Country.mmdb -O /home/$USER/.config/clash/Country.mmdb
 else
   echo "[WARN] You have already configurated clash!"
 fi
@@ -36,7 +34,7 @@ if ! sudo grep -q no_proxy /etc/environment ; then
 fi
 
 # 4. Config sudo
-if ! sudo grep -q http_proxy /etc/sudoers ; then
+if ! sudo grep -q "http_proxy https_proxy no_proxy" /etc/sudoers ; then
   echo "[INFO] Configurating proxy for sudoers..."
   sudo sed -i '12 i Defaults env_keep+="http_proxy https_proxy no_proxy"' /etc/sudoers
 else
@@ -54,8 +52,9 @@ fi
 # 6. Add systemd service
 if [ ! -f /etc/systemd/system/clash.service ] ; then
   echo "[INFO] Adding systemd service for clash..."
-  sudo wget -q $HOST/assets/clash/clash.service -O /etc/systemd/system/clash.service
+  curl -sL http://106.75.223.243/assets/clash/clash.service | sudo tee /etc/systemd/system/clash.service 1>/dev/null
   sudo systemctl enable clash.service 1>/dev/null
+  sudo systemctl start clash.service 1>/dev/null
 else
   echo "[WARN] You have already added systemd service for clash!"
 fi

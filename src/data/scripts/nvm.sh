@@ -14,7 +14,6 @@ fi
 if ! grep -q .nvm /home/$USER/.bashrc ; then
   echo "[INFO] Configurating nvm..."
   curl -sL $HOST/assets/nvm/nvm.sh | cat >> /home/$USER/.bashrc
-  source /home/$USER/.bashrc
 else
   echo "[WARN] You have already configurated nvm for $USER!"
 fi
