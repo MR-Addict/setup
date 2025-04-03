@@ -44,7 +44,7 @@ fi
 # 5. Config apt
 if [ ! -f /etc/apt/apt.conf.d/10proxy ] ; then
   echo "[INFO] Configurating proxy for apt..."
-  echo 'Acquire::http::Proxy "http://127.0.0.1:7890/";' | sudo tee /etc/apt/apt.conf.d/10proxy 1>/dev/null
+  echo 'Acquire::http::Proxy "http://127.0.0.1:7890/";' | sudo tee /etc/apt/apt.conf.d/10proxy &>/dev/null
 else
   echo "[WARN] You have already configurated proxy for apt!"
 fi
@@ -52,9 +52,9 @@ fi
 # 6. Add systemd service
 if [ ! -f /etc/systemd/system/clash.service ] ; then
   echo "[INFO] Adding systemd service for clash..."
-  curl -sL http://106.75.223.243/assets/clash/clash.service | sudo tee /etc/systemd/system/clash.service 1>/dev/null
-  sudo systemctl enable clash.service 1>/dev/null
-  sudo systemctl start clash.service 1>/dev/null
+  curl -sL $HOST/assets/clash/clash.service | sudo tee /etc/systemd/system/clash.service &>/dev/null
+  sudo systemctl enable clash.service &>/dev/null
+  sudo systemctl start clash.service &>/dev/null
 else
   echo "[WARN] You have already added systemd service for clash!"
 fi

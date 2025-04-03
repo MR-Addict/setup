@@ -3,7 +3,7 @@
 # 1. Install docker
 if ! command -v docker &>/dev/null ; then
   echo "[INFO] Installing docker..."
-  sudo apt-get install docker.io -y 1>/dev/null
+  sudo apt-get install docker.io -y &>/dev/null
   sudo usermod -aG docker $USER
 else
   echo "[WARN] You have already installed docker!"

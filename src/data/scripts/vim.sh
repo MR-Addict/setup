@@ -3,7 +3,7 @@
 # 1. Install Vim
 if ! command -v vim &>/dev/null ; then
   echo "[INFO] Installing vim..."
-  sudo apt-get install vim -y 1>/dev/null
+  sudo apt-get install vim -y &>/dev/null
 else
   echo "[WARN] You have installed vim!"
 fi
@@ -24,4 +24,4 @@ else
 fi
 
 echo "[INFO] Configuting vim as your default editor..."
-sudo update-alternatives --set editor /usr/bin/vim.basic 1>/dev/null
+sudo update-alternatives --set editor /usr/bin/vim.basic &>/dev/null

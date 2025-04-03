@@ -17,7 +17,7 @@ fi
 
 # 2. Istall hack fonts
 # echo "[INFO] Installing hack fonts..."
-# sudo apt-get -y install fonts-hack-ttf 1>/dev/null
+# sudo apt-get -y install fonts-hack-ttf &>/dev/null
 
 # 3. Install themes
 if [ ! -d /home/$USER/.poshthemes ] ; then
