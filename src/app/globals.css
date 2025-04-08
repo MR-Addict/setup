@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: dark; /* Use dark mode for the scrollbar */
   scrollbar-color: #737373 #000; /* thumb color, track color */
 }
 

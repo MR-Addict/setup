@@ -10,7 +10,7 @@
   }
 
   & p {
-    @apply text-neutral-400 text-balance;
+    @apply text-neutral-300;
   }
 }
 
@@ -18,7 +18,7 @@
   @apply w-full;
 
   & thead {
-    @apply text-neutral-400;
+    @apply text-neutral-300;
   }
 
   & :is(th, td) {
