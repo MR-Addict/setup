@@ -1,0 +1,30 @@
+.row {
+  & td:first-of-type a {
+    @apply underline;
+  }
+}
+
+.actions {
+  @apply min-w-24 h-full relative;
+
+  & > div {
+    @apply absolute top-1/2 -translate-y-1/2;
+    @apply flex flex-row items-center gap-1 z-10;
+  }
+}
+
+.btn {
+  @apply text-neutral-400 rounded-md p-1;
+
+  &:hover {
+    @apply bg-neutral-400/30;
+  }
+}
+
+.link {
+  @apply absolute inset-0;
+
+  &:hover {
+    @apply bg-neutral-400/10;
+  }
+}

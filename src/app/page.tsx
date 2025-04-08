@@ -1,11 +1,7 @@
-import Link from "next/link";
-import { PiShare } from "react-icons/pi";
-import { LiaFileAlt } from "react-icons/lia";
-
 import style from "./page.module.css";
 import { scripts } from "@/data/data";
 
-import CopyButton from "@/components/CopyButton/CopyButton";
+import TableRow from "./components/TableRow/TableRow";
 
 export default function Page() {
   return (
@@ -33,24 +29,7 @@ export default function Page() {
 
           <tbody>
             {scripts.map((script) => (
-              <tr key={script.id}>
-                <td>{script.name}</td>
-                <td>{script.description}</td>
-                <td className={style.actions}>
-                  <div>
-                    <CopyButton text={script.urlCmd} title="Copy install command" className={style.btn} />
-                    <Link className={style.btn} title="Script details" href={`/script/${script.id}`}>
-                      <LiaFileAlt />
-                    </Link>
-                    <Link className={style.btn} title="View script" href={`/api/script/${script.id}`} target="_blank">
-                      <PiShare />
-                    </Link>
-                  </div>
-                </td>
-                <td>
-                  <Link href={`/script/${script.id}`} className={style.link} />
-                </td>
-              </tr>
+              <TableRow key={script.id} script={script} />
             ))}
           </tbody>
         </table>
