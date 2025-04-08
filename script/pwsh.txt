@@ -1,0 +1,54 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[2681,["177","static/chunks/app/layout-600e5c3af7977d2d.js"],"default"]
+6:I[9665,[],"OutletBoundary"]
+9:I[9665,[],"ViewportBoundary"]
+b:I[9665,[],"MetadataBoundary"]
+d:I[6614,[],""]
+:HL["/setup/_next/static/css/50a89700f7f8e98a.css","style"]
+:HL["/setup/_next/static/css/57594da0f4bff77b.css","style"]
+0:{"P":null,"b":"_HfBi8gB7lrW4ELGWEvQj","p":"/setup","c":["","script","pwsh"],"i":false,"f":[[["",{"children":["script",{"children":[["slug","pwsh","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/setup/_next/static/css/50a89700f7f8e98a.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}]]}]}]]}],{"children":["script",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","pwsh","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5","$undefined",[["$","link","0",{"rel":"stylesheet","href":"/setup/_next/static/css/57594da0f4bff77b.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L6",null,{"children":["$L7","$L8",null]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","rTu-h68hA1hNuX9NSGQ7o",{"children":[["$","$L9",null,{"children":"$La"}],null]}],["$","$Lb",null,{"children":"$Lc"}]]}],false]],"m":"$undefined","G":["$d","$undefined"],"s":false,"S":true}
+e:I[3947,["873","static/chunks/3d47b92a-9c1ec1db60883484.js","949","static/chunks/578c2090-c3f1d045fd2fcb30.js","585","static/chunks/b563f954-8b327f23d09b68ea.js","995","static/chunks/995-831055410919ecab.js","197","static/chunks/197-0685c161c1002bc5.js","436","static/chunks/app/script/%5Bslug%5D/page-ad4b97650c619346.js"],"default"]
+f:T626,[Back](/)
+
+# Powershell
+
+PowerShell 7 for linux.
+
+You can install this script by running the following command in your terminal.
+
+```sh
+curl -sL https://MR-Addict.github.io/setup/api/script/pwsh | bash
+```
+
+Below is the raw script content, which you can also get from the command above from the api https://MR-Addict.github.io/setup/api/script/pwsh.
+
+```sh
+#! /bin/bash
+
+# 1. Install powershell
+if ! command -v pwsh &>/dev/null ; then
+  echo "[INFO] Installing powershell..."
+  [! -d /home/$USER/Powershell ] && mkdir /home/$USER/Powershell
+  wget -q https://github.com/PowerShell/PowerShell/releases/download/v7.2.5/powershell-7.2.5-linux-x64.tar.gz -O /home/$USER/Powershell/powershell.tar.gz
+  tar -zxf /home/$USER/Powershell/powershell.tar.gz -C /home/$USER/Powershell
+  sudo ln -sf /home/$USER/Powershell/pwsh /usr/bin/pwsh
+else
+  echo "[WARN] You have already installed powershell!"
+fi
+
+# 2. Config Powershell
+if [ ! -f /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1 ] ; then
+  [ ! -d /home/$USER/.config/powershell ] && mkdir /home/$USER/.config/powershell
+  wget -q https://MR-Addict.github.io/setup/assets/pwsh/Microsoft.PowerShell_profile.ps1 -O /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
+  if ! command -v oh-my-posh &>/dev/null ; then
+    sed -i "$ a\# Init Oh-my-posh" /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
+    sed -i "$ a\oh-my-posh --init --shell pwsh --config /home/$USER/.poshthemes/amro.omp.json | Invoke-Expression" /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
+  fi
+fi
+```5:["$","main",null,{"className":"page_wrapper__LhHMi","children":["$","$Le",null,{"content":"$f","className":"page_markdown__yCx0Y"}]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+8:null
+c:[["$","title","0",{"children":"Powershell • Setup"}],["$","meta","1",{"name":"description","content":"MR-Addict's ubuntu setup scripts"}],["$","link","2",{"rel":"icon","href":"/setup/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
