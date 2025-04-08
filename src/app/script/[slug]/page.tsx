@@ -28,7 +28,8 @@ ${script.shell}
 `.trim();
 };
 
-export default function Page({ params: { slug } }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const script = scripts.find((script) => script.id === slug);
   if (!script) return notFound();
 
@@ -43,6 +44,7 @@ export function generateStaticParams() {
   return scripts.map((script) => ({ slug: script.id }));
 }
 
-export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   return setMetadata(scripts.find((script) => script.id === slug)?.name);
 }

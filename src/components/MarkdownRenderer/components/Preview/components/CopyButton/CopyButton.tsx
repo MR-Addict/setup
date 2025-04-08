@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import style from "../../Preview.module.css";
 import copyToClipboard from "@/lib/utils/copyToClipboard";
 
-type Props = { preRef: React.RefObject<HTMLPreElement> } & React.ComponentProps<"button">;
+type Props = { preRef: React.RefObject<HTMLPreElement | null> } & React.ComponentProps<"button">;
 
 export default function CopyButton({ preRef, ...rest }: Props) {
   const [copied, setCopied] = useState(false);

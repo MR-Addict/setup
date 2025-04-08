@@ -1,6 +1,7 @@
 import { scripts } from "@/data/data";
 
-export function GET(req: Request, { params: { slug } }: { params: { slug: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const script = scripts.find((script) => script.id === slug);
   if (!script) return new Response("No such script", { status: 404 });
 
