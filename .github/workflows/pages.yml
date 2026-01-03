@@ -25,7 +25,7 @@ jobs:
       - name: Set basePath
         run: |
           REPO_NAME=$(basename $GITHUB_REPOSITORY)
-          sed -i "s|basePath: \"\"|basePath: \"/$REPO_NAME\"|" next.config.js
+          sed -i "s|basePath: \"\"|basePath: \"/$REPO_NAME\"|" next.config.ts
 
       - run: npm install
       - run: npm run build
