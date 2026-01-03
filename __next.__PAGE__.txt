@@ -1,0 +1,175 @@
+1:"$Sreact.fragment"
+2:I[46672,["/setup/_next/static/chunks/42bf59fbf0427e83.js","/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/fcf47dfb78275fc8.js","/setup/_next/static/chunks/1dd4406326ef9a1f.js"],"default"]
+14:I[97367,["/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/803a574de9eda7ae.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+:HL["/setup/_next/static/chunks/2526e00148d3df6a.css","style"]
+3:T844,#! /bin/bash
+
+# 1. Install clash
+if ! clash -v &>/dev/null; then
+  echo "[INFO] Installing clash..."
+  wget -q https://MR-Addict.github.io/setup/assets/clash/clash -O clash
+  chmod u+x clash
+  sudo mv clash /usr/local/bin
+else
+  echo "[WARN] You have already installed clash!"
+fi
+
+# 2. Config clash
+if ! clash -t &>/dev/null; then
+  echo "[INFO] Configurating clash..."
+  [ ! -d /home/$USER/.config/clash ] && mkdir /home/$USER/.config/clash
+  wget -q https://MR-Addict.github.io/setup/assets/clash/Country.mmdb -O /home/$USER/.config/clash/Country.mmdb
+else
+  echo "[WARN] You have already configurated clash!"
+fi
+
+# 3. Config environment
+echo "[INFO] Configurating proxy environment..."
+if ! sudo grep -q http_proxy /etc/environment ; then
+  sudo sed -i '$ a\\nexport http_proxy="http://127.0.0.1:7890"' /etc/environment
+fi
+
+if ! sudo grep -q https_proxy /etc/environment ; then
+  sudo sed -i '$ a\export https_proxy="http://127.0.0.1:7890"' /etc/environment
+fi
+
+if ! sudo grep -q no_proxy /etc/environment ; then
+  sudo sed -i '$ a\export no_proxy="localhost, 127.0.0.1, *edu.cn"' /etc/environment
+fi
+
+# 4. Config sudo
+if ! sudo grep -q "http_proxy https_proxy no_proxy" /etc/sudoers ; then
+  echo "[INFO] Configurating proxy for sudoers..."
+  sudo sed -i '12 i Defaults env_keep+="http_proxy https_proxy no_proxy"' /etc/sudoers
+else
+  echo "[WARN] You have configurated proxy for sudoers!"
+fi
+
+# 5. Config apt
+if [ ! -f /etc/apt/apt.conf.d/10proxy ] ; then
+  echo "[INFO] Configurating proxy for apt..."
+  echo 'Acquire::http::Proxy "http://127.0.0.1:7890/";' | sudo tee /etc/apt/apt.conf.d/10proxy &>/dev/null
+else
+  echo "[WARN] You have already configurated proxy for apt!"
+fi
+
+# 6. Add systemd service
+if [ ! -f /etc/systemd/system/clash.service ] ; then
+  echo "[INFO] Adding systemd service for clash..."
+  curl -sL https://MR-Addict.github.io/setup/assets/clash/clash.service | sudo tee /etc/systemd/system/clash.service &>/dev/null
+  sudo systemctl enable clash.service &>/dev/null
+  sudo systemctl start clash.service &>/dev/null
+else
+  echo "[WARN] You have already added systemd service for clash!"
+fi0:{"buildId":"jhsDNNAZjHD1x2bZOqopz","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"page-module___8aEwW__wrapper","children":[["$","header",null,{"className":"page-module___8aEwW__header","children":[["$","h1",null,{"children":"Setup scripts"}],["$","div",null,{"children":[["$","p",null,{"children":["This is a collection of ",["$","strong",null,{"children":"personal"}]," scripts that I used to set up my ubuntu machine environment quickly and easily."]}],["$","p",null,{"children":["If you want to use them, you can double ",["$","strong",null,{"children":"check"}]," the scripts by view the its content and make sure they are safe to use."]}]]}]]}],["$","div",null,{"className":"max-w-full overflow-x-auto","children":["$","table",null,{"className":"page-module___8aEwW__table","children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Name"}],["$","th",null,{"children":"Description"}],["$","th",null,{"children":"Actions"}],["$","th",null,{}]]}]}],["$","tbody",null,{"children":[["$","$L2","clash",{"script":{"id":"clash","name":"Clash","description":"Proxy server, clash core","url":"https://MR-Addict.github.io/setup/api/script/clash","urlCmd":"curl -sL https://MR-Addict.github.io/setup/api/script/clash | bash","shell":"$3"}}],["$","$L2","alias",{"script":{"id":"alias","name":"Alias","description":"Personal terminal aliases for linux","url":"https://MR-Addict.github.io/setup/api/script/alias","urlCmd":"curl -sL https://MR-Addict.github.io/setup/api/script/alias | bash","shell":"#! /bin/bash\n\n# Config alias\nif [ ! -f /home/$USER/.bash_aliases ] ; then\n  echo \"[INFO] Configurating alias for $USER...\"\n  wget -q https://MR-Addict.github.io/setup/assets/alias/bash_aliases -O /home/$USER/.bash_aliases\nelse\n  echo \"[WARN] You have already configurate alias in $USER!\"\nfi\n\nif ! sudo test -f /root/.bash_aliases; then\n  echo \"[INFO] Configurating alias for root...\"\n  sudo cp /home/$USER/.bash_aliases /root\nelse\n  echo \"[WARN] You have already configurate alias in root!\"\nfi"}}],"$L4","$L5","$L6","$L7","$L8","$L9","$La","$Lb"]}]]}]}]]}],["$Lc","$Ld","$Le","$Lf"],"$L10"]}],"loading":null,"isPartial":false}
+4:["$","$L2","vim",{"script":{"id":"vim","name":"Vim","description":"Personal vim configuration","url":"https://MR-Addict.github.io/setup/api/script/vim","urlCmd":"curl -sL https://MR-Addict.github.io/setup/api/script/vim | bash","shell":"#! /bin/bash\n\n# 1. Install Vim\nif ! command -v vim &>/dev/null ; then\n  echo \"[INFO] Installing vim...\"\n  sudo apt-get install vim -y &>/dev/null\nelse\n  echo \"[WARN] You have installed vim!\"\nfi\n\n# 2. Config vim\nif [ ! -f /home/$USER/.vimrc ] ; then\n  echo \"[INFO] Configurating vim for $USER...\"\n  wget -q https://MR-Addict.github.io/setup/assets/vim/vimrc -O /home/$USER/.vimrc\nelse\n  echo \"[WARN] You have already configurated vim in $USER!\"\nfi\n\nif ! sudo test -f /root/.vimrc; then\n  echo \"[INFO] Configurating vim for root...\"\n  sudo cp /home/$USER/.vimrc /root\nelse\n  echo \"[WARN] You have already configurated vim in root!\"\nfi\n\necho \"[INFO] Configuting vim as your default editor...\"\nsudo update-alternatives --set editor /usr/bin/vim.basic &>/dev/null"}}]
+11:T69a,#! /bin/bash
+
+# 0. Install unzip
+if ! command -v unzip &>/dev/null ; then
+  echo "[INFO] Installing unzip..."
+  sudo apt install unzip -y &>/dev/null
+fi
+
+# 1. Install omp
+if ! command -v oh-my-posh &>/dev/null ; then
+  echo "[INFO] Installing oh-my-posh..."
+  sudo wget -q https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+  sudo chmod +x /usr/local/bin/oh-my-posh
+else
+  echo "[WARN] You have already installed oh-my-posh!"
+fi
+
+# 2. Istall hack fonts
+# echo "[INFO] Installing hack fonts..."
+# sudo apt-get -y install fonts-hack-ttf &>/dev/null
+
+# 3. Install themes
+if [ ! -d /home/$USER/.poshthemes ] ; then
+  echo "[INFO] Installing oh-my-posh themes..."
+  mkdir /home/$USER/.poshthemes
+  wget -q https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O /home/$USER/.poshthemes/themes.zip
+  unzip -q -o /home/$USER/.poshthemes/themes.zip -d /home/$USER/.poshthemes
+  chmod u+rw /home/$USER/.poshthemes/*.omp.*
+  rm /home/$USER/.poshthemes/themes.zip
+else
+  echo "[WARN] You have already installed oh-my-posh themes!"
+fi
+
+# 4. Config bash
+if ! grep -q oh-my-posh /home/$USER/.bashrc ; then
+  echo "[INFO] Configurating oh-my-posh for bash..."
+  sed -i "$ a\eval \"\$(oh-my-posh --init --shell bash --config /home/$USER/.poshthemes/amro.omp.json)\"" /home/$USER/.bashrc
+else
+  echo "[WARN] You have already configurated oh-my-posh for $USER!"
+fi
+
+if ! sudo grep -q oh-my-posh /root/.bashrc ; then
+  sudo sed -i "$ a\eval \"\$(oh-my-posh --init --shell bash --config /home/$USER/.poshthemes/amro.omp.json)\"" /root/.bashrc
+else
+  echo "[WARN] You have already configurated oh-my-posh for root!"
+fi5:["$","$L2","omp",{"script":{"id":"omp","name":"Oh my posh","description":"Prompt theme engine","url":"https://MR-Addict.github.io/setup/api/script/omp","urlCmd":"curl -sL https://MR-Addict.github.io/setup/api/script/omp | bash","shell":"$11"}}]
+6:["$","$L2","git",{"script":{"id":"git","name":"Git","description":"Personal git configuration","url":"https://MR-Addict.github.io/setup/api/script/git","urlCmd":"curl -sL https://MR-Addict.github.io/setup/api/script/git | bash","shell":"#! /bin/bash\n\n# 1. Install git\nif ! command -v git &>/dev/null ; then\n  echo \"[INFO] Installing git...\"\n  sudo apt-get install git -y &>/dev/null\nelse\n  echo \"[WARN] You have already installed git!\"\nfi\n\n# 2. Config git\necho \"[INFO] Configurating git...\"\ngit config --global user.name Cael\ngit config --global user.email MR-Addict@qq.com\ngit config --global http.proxy http://127.0.0.1:7890\ngit config --global https.proxy http://127.0.0.1:7890\ngit config --global init.defaultBranch main"}}]
+12:T42c,#! /bin/bash
+
+# 1. Install docker
+if ! command -v docker &>/dev/null ; then
+  echo "[INFO] Installing docker..."
+  sudo apt-get install docker.io -y &>/dev/null
+  sudo usermod -aG docker $USER
+else
+  echo "[WARN] You have already installed docker!"
+fi
+
+# 2. Install docker-compose
+if ! command -v docker-compose &>/dev/null ; then
+  echo "[INFO] Installing docker-compose..."
+  wget -q https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -O docker-compose
+  chmod +x docker-compose
+  sudo mv docker-compose /usr/local/bin
+else
+  echo "[WARN] You have installed docker-compose!"
+fi
+
+# 3. Setup proxy
+if [ ! -f /etc/systemd/system/docker.service.d/proxy.conf ] ; then
+  echo "[INFO] Configurated proxy for docker!"
+  sudo mkdir -p /etc/systemd/system/docker.service.d
+  sudo wget -q https://MR-Addict.github.io/setup/assets/docker/proxy.conf -O /etc/systemd/system/docker.service.d/proxy.conf
+  sudo systemctl daemon-reload
+  sudo systemctl restart docker.service
+else
+  echo "[WARN] You have already configurated proxy for docker!"
+fi7:["$","$L2","docker",{"script":{"id":"docker","name":"Docker","description":"Docker and docker-compose","url":"https://MR-Addict.github.io/setup/api/script/docker","urlCmd":"curl -sL https://MR-Addict.github.io/setup/api/script/docker | bash","shell":"$12"}}]
+8:["$","$L2","nvm",{"script":{"id":"nvm","name":"NVM","description":"Node version manager","url":"https://MR-Addict.github.io/setup/api/script/nvm","urlCmd":"curl -sL https://MR-Addict.github.io/setup/api/script/nvm | bash","shell":"#! /bin/bash\n\n# 1. Clone nvm to .nvm\nif [ ! -d /home/$USER/.nvm ] ; then\n  echo \"[INFO] Cloning nvm to /home/$USER/.nvm...\"\n  git clone https://github.com/nvm-sh/nvm.git /home/$USER/.nvm &>/dev/null\n  cd /home/$USER/.nvm\n  git checkout `git describe --abbrev=0 --tags --match \"v[0-9]*\" $(git rev-list --tags --max-count=1)` &>/dev/null\nelse\n  echo \"[WARN] You have already cloned nvm to /home/$USER/.nvm!\"\nfi\n\n# 2. Config nvm\nif ! grep -q .nvm /home/$USER/.bashrc ; then\n  echo \"[INFO] Configurating nvm...\"\n  curl -sL https://MR-Addict.github.io/setup/assets/nvm/nvm.sh | cat >> /home/$USER/.bashrc\nelse\n  echo \"[WARN] You have already configurated nvm for $USER!\"\nfi"}}]
+9:["$","$L2","mdbook",{"script":{"id":"mdbook","name":"MDbook","description":"Markdown documentation generation tool","url":"https://MR-Addict.github.io/setup/api/script/mdbook","urlCmd":"curl -sL https://MR-Addict.github.io/setup/api/script/mdbook | bash","shell":"#! /bin/bash\n\n# 1. Install mdbook\nif ! command -v mdbook &>/dev/null ; then\n  echo \"[INFO] Installing mdbook...\"\n  wget -q https://github.com/rust-lang/mdBook/releases/download/v0.4.48/mdbook-v0.4.48-x86_64-unknown-linux-gnu.tar.gz -O mdbook.tar.gz\n  tar -zxf mdbook.tar.gz\n  rm mdbook.tar.gz\n  chmod u+x mdbook\n  sudo mv mdbook /usr/local/bin\nelse\n  echo \"[WARN] You have already installed mdbook!\"\nfi\n\n# 2. Install mdbook-admonish\nif ! command -v mdbook-admonish &>/dev/null ; then\n  echo \"[INFO] Installing mdbook-admonish...\"\n  wget -q https://github.com/tommilligan/mdbook-admonish/releases/download/v1.19.0/mdbook-admonish-v1.19.0-x86_64-unknown-linux-gnu.tar.gz -O mdbook-admonish.tar.gz\n  tar -zxf mdbook-admonish.tar.gz\n  rm mdbook-admonish.tar.gz\n  chmod u+x mdbook-admonish\n  sudo mv mdbook-admonish /usr/local/bin\nelse\n  echo \"[WARN] You have already installed mdbook-admonish!\"\nfi"}}]
+13:T4bd,#! /bin/bash
+
+# 1. Install powershell
+if ! command -v pwsh &>/dev/null ; then
+  echo "[INFO] Installing powershell..."
+  [! -d /home/$USER/Powershell ] && mkdir /home/$USER/Powershell
+  wget -q https://github.com/PowerShell/PowerShell/releases/download/v7.2.5/powershell-7.2.5-linux-x64.tar.gz -O /home/$USER/Powershell/powershell.tar.gz
+  tar -zxf /home/$USER/Powershell/powershell.tar.gz -C /home/$USER/Powershell
+  sudo ln -sf /home/$USER/Powershell/pwsh /usr/bin/pwsh
+else
+  echo "[WARN] You have already installed powershell!"
+fi
+
+# 2. Config Powershell
+if [ ! -f /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1 ] ; then
+  [ ! -d /home/$USER/.config/powershell ] && mkdir /home/$USER/.config/powershell
+  wget -q https://MR-Addict.github.io/setup/assets/pwsh/Microsoft.PowerShell_profile.ps1 -O /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
+  if ! command -v oh-my-posh &>/dev/null ; then
+    sed -i "$ a\# Init Oh-my-posh" /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
+    sed -i "$ a\oh-my-posh --init --shell pwsh --config /home/$USER/.poshthemes/amro.omp.json | Invoke-Expression" /home/$USER/.config/powershell/Microsoft.PowerShell_profile.ps1
+  fi
+fia:["$","$L2","pwsh",{"script":{"id":"pwsh","name":"Powershell","description":"PowerShell 7 for linux","url":"https://MR-Addict.github.io/setup/api/script/pwsh","urlCmd":"curl -sL https://MR-Addict.github.io/setup/api/script/pwsh | bash","shell":"$13"}}]
+b:["$","$L2","grub",{"script":{"id":"grub","name":"Grub","description":"Grub configuration","url":"https://MR-Addict.github.io/setup/api/script/grub","urlCmd":"curl -sL https://MR-Addict.github.io/setup/api/script/grub | bash","shell":"#! /bin/bash\n\ncount=\"false\"\n\n# 1. Update grub timeout\nif ! sudo grep -q GRUB_TIMEOUT=0 /etc/default/grub ; then\n  echo \"[INFO] Updating grub timeout...\"\n  sudo sed -i 's/GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' /etc/default/grub\n  count=\"true\"\nelse\n  echo \"[WARN] You have already updated grub timeout!\"\nfi\n\n# 2. Disable timeout adjust\nlastLine=$( sudo tail -n 1 /etc/grub.d/30_os-prober )\nif [ \"$lastLine\" = \"adjust_timeout\" ] ; then\n  echo \"[INFO] Disabling adjust timeout...\"\n  sudo sed -i '$ d' /etc/grub.d/30_os-prober\n  sudo sed -i '$ a\\#adjust_timeout' /etc/grub.d/30_os-prober\n  count=\"true\"\nelse\n  echo \"[WARN] You have disabled adjust timeout!\"\nfi\n\n# 3. Update grub\nif [ \"$count\" = \"true\" ] ; then\n  echo \"[INFO] Updating grub...\"\n  sudo update-grub &>/dev/null\nelse\n  echo \"[WARN] You dont't have to update grub!\"\nfi"}}]
+c:["$","link","0",{"rel":"stylesheet","href":"/setup/_next/static/chunks/2526e00148d3df6a.css","precedence":"next"}]
+d:["$","script","script-0",{"src":"/setup/_next/static/chunks/ff1a16fafef87110.js","async":true}]
+e:["$","script","script-1",{"src":"/setup/_next/static/chunks/fcf47dfb78275fc8.js","async":true}]
+f:["$","script","script-2",{"src":"/setup/_next/static/chunks/1dd4406326ef9a1f.js","async":true}]
+10:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+16:null

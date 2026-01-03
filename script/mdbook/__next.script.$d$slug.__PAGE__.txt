@@ -1,0 +1,47 @@
+1:"$Sreact.fragment"
+2:I[79108,["/setup/_next/static/chunks/42bf59fbf0427e83.js","/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/e7022a0fcdbf6899.js","/setup/_next/static/chunks/fa8002d68d2f6b83.js"],"default"]
+4:I[97367,["/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/803a574de9eda7ae.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+:HL["/setup/_next/static/chunks/efd4962e8d0d2dbe.css","style"]
+3:T4f6,[Back](/)
+
+# MDbook
+
+Markdown documentation generation tool.
+
+You can install this script by running the following command in your terminal.
+
+```sh
+curl -sL https://MR-Addict.github.io/setup/api/script/mdbook | bash
+```
+
+Below is the raw script content, which you can also get from the command above from the api https://MR-Addict.github.io/setup/api/script/mdbook.
+
+```sh
+#! /bin/bash
+
+# 1. Install mdbook
+if ! command -v mdbook &>/dev/null ; then
+  echo "[INFO] Installing mdbook..."
+  wget -q https://github.com/rust-lang/mdBook/releases/download/v0.4.48/mdbook-v0.4.48-x86_64-unknown-linux-gnu.tar.gz -O mdbook.tar.gz
+  tar -zxf mdbook.tar.gz
+  rm mdbook.tar.gz
+  chmod u+x mdbook
+  sudo mv mdbook /usr/local/bin
+else
+  echo "[WARN] You have already installed mdbook!"
+fi
+
+# 2. Install mdbook-admonish
+if ! command -v mdbook-admonish &>/dev/null ; then
+  echo "[INFO] Installing mdbook-admonish..."
+  wget -q https://github.com/tommilligan/mdbook-admonish/releases/download/v1.19.0/mdbook-admonish-v1.19.0-x86_64-unknown-linux-gnu.tar.gz -O mdbook-admonish.tar.gz
+  tar -zxf mdbook-admonish.tar.gz
+  rm mdbook-admonish.tar.gz
+  chmod u+x mdbook-admonish
+  sudo mv mdbook-admonish /usr/local/bin
+else
+  echo "[WARN] You have already installed mdbook-admonish!"
+fi
+```0:{"buildId":"jhsDNNAZjHD1x2bZOqopz","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"page-module__aW5Xbq__wrapper","children":["$","$L2",null,{"content":"$3","className":"page-module__aW5Xbq__markdown"}]}],[["$","link","0",{"rel":"stylesheet","href":"/setup/_next/static/chunks/efd4962e8d0d2dbe.css","precedence":"next"}],["$","script","script-0",{"src":"/setup/_next/static/chunks/ff1a16fafef87110.js","async":true}],["$","script","script-1",{"src":"/setup/_next/static/chunks/e7022a0fcdbf6899.js","async":true}],["$","script","script-2",{"src":"/setup/_next/static/chunks/fa8002d68d2f6b83.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"loading":null,"isPartial":false}
+6:null

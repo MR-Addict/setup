@@ -1,0 +1,82 @@
+1:"$Sreact.fragment"
+2:I[79108,["/setup/_next/static/chunks/42bf59fbf0427e83.js","/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/e7022a0fcdbf6899.js","/setup/_next/static/chunks/fa8002d68d2f6b83.js"],"default"]
+4:I[97367,["/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/803a574de9eda7ae.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+:HL["/setup/_next/static/chunks/efd4962e8d0d2dbe.css","style"]
+3:T9ac,[Back](/)
+
+# Clash
+
+Proxy server, clash core.
+
+You can install this script by running the following command in your terminal.
+
+```sh
+curl -sL https://MR-Addict.github.io/setup/api/script/clash | bash
+```
+
+Below is the raw script content, which you can also get from the command above from the api https://MR-Addict.github.io/setup/api/script/clash.
+
+```sh
+#! /bin/bash
+
+# 1. Install clash
+if ! clash -v &>/dev/null; then
+  echo "[INFO] Installing clash..."
+  wget -q https://MR-Addict.github.io/setup/assets/clash/clash -O clash
+  chmod u+x clash
+  sudo mv clash /usr/local/bin
+else
+  echo "[WARN] You have already installed clash!"
+fi
+
+# 2. Config clash
+if ! clash -t &>/dev/null; then
+  echo "[INFO] Configurating clash..."
+  [ ! -d /home/$USER/.config/clash ] && mkdir /home/$USER/.config/clash
+  wget -q https://MR-Addict.github.io/setup/assets/clash/Country.mmdb -O /home/$USER/.config/clash/Country.mmdb
+else
+  echo "[WARN] You have already configurated clash!"
+fi
+
+# 3. Config environment
+echo "[INFO] Configurating proxy environment..."
+if ! sudo grep -q http_proxy /etc/environment ; then
+  sudo sed -i '$ a\\nexport http_proxy="http://127.0.0.1:7890"' /etc/environment
+fi
+
+if ! sudo grep -q https_proxy /etc/environment ; then
+  sudo sed -i '$ a\export https_proxy="http://127.0.0.1:7890"' /etc/environment
+fi
+
+if ! sudo grep -q no_proxy /etc/environment ; then
+  sudo sed -i '$ a\export no_proxy="localhost, 127.0.0.1, *edu.cn"' /etc/environment
+fi
+
+# 4. Config sudo
+if ! sudo grep -q "http_proxy https_proxy no_proxy" /etc/sudoers ; then
+  echo "[INFO] Configurating proxy for sudoers..."
+  sudo sed -i '12 i Defaults env_keep+="http_proxy https_proxy no_proxy"' /etc/sudoers
+else
+  echo "[WARN] You have configurated proxy for sudoers!"
+fi
+
+# 5. Config apt
+if [ ! -f /etc/apt/apt.conf.d/10proxy ] ; then
+  echo "[INFO] Configurating proxy for apt..."
+  echo 'Acquire::http::Proxy "http://127.0.0.1:7890/";' | sudo tee /etc/apt/apt.conf.d/10proxy &>/dev/null
+else
+  echo "[WARN] You have already configurated proxy for apt!"
+fi
+
+# 6. Add systemd service
+if [ ! -f /etc/systemd/system/clash.service ] ; then
+  echo "[INFO] Adding systemd service for clash..."
+  curl -sL https://MR-Addict.github.io/setup/assets/clash/clash.service | sudo tee /etc/systemd/system/clash.service &>/dev/null
+  sudo systemctl enable clash.service &>/dev/null
+  sudo systemctl start clash.service &>/dev/null
+else
+  echo "[WARN] You have already added systemd service for clash!"
+fi
+```0:{"buildId":"jhsDNNAZjHD1x2bZOqopz","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"page-module__aW5Xbq__wrapper","children":["$","$L2",null,{"content":"$3","className":"page-module__aW5Xbq__markdown"}]}],[["$","link","0",{"rel":"stylesheet","href":"/setup/_next/static/chunks/efd4962e8d0d2dbe.css","precedence":"next"}],["$","script","script-0",{"src":"/setup/_next/static/chunks/ff1a16fafef87110.js","async":true}],["$","script","script-1",{"src":"/setup/_next/static/chunks/e7022a0fcdbf6899.js","async":true}],["$","script","script-2",{"src":"/setup/_next/static/chunks/fa8002d68d2f6b83.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"loading":null,"isPartial":false}
+6:null

@@ -1,0 +1,79 @@
+1:"$Sreact.fragment"
+2:I[39756,["/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/803a574de9eda7ae.js"],"default"]
+3:I[37457,["/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/803a574de9eda7ae.js"],"default"]
+4:I[19258,["/setup/_next/static/chunks/42bf59fbf0427e83.js"],"default"]
+6:I[97367,["/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/803a574de9eda7ae.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[97367,["/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/803a574de9eda7ae.js"],"ViewportBoundary"]
+b:I[97367,["/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/803a574de9eda7ae.js"],"MetadataBoundary"]
+d:I[68027,[],"default"]
+:HL["/setup/_next/static/chunks/15b9768b1383d00d.css","style"]
+:HL["/setup/_next/static/chunks/efd4962e8d0d2dbe.css","style"]
+0:{"P":null,"b":"jhsDNNAZjHD1x2bZOqopz","c":["","script","omp"],"q":"","i":false,"f":[[["",{"children":["script",{"children":[["slug","omp","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/setup/_next/static/chunks/15b9768b1383d00d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/setup/_next/static/chunks/42bf59fbf0427e83.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","link","0",{"rel":"stylesheet","href":"/setup/_next/static/chunks/efd4962e8d0d2dbe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/setup/_next/static/chunks/ff1a16fafef87110.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/setup/_next/static/chunks/e7022a0fcdbf6899.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/setup/_next/static/chunks/fa8002d68d2f6b83.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],null]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+e:I[79108,["/setup/_next/static/chunks/42bf59fbf0427e83.js","/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/e7022a0fcdbf6899.js","/setup/_next/static/chunks/fa8002d68d2f6b83.js"],"default"]
+f:T7fe,[Back](/)
+
+# Oh my posh
+
+Prompt theme engine.
+
+You can install this script by running the following command in your terminal.
+
+```sh
+curl -sL https://MR-Addict.github.io/setup/api/script/omp | bash
+```
+
+Below is the raw script content, which you can also get from the command above from the api https://MR-Addict.github.io/setup/api/script/omp.
+
+```sh
+#! /bin/bash
+
+# 0. Install unzip
+if ! command -v unzip &>/dev/null ; then
+  echo "[INFO] Installing unzip..."
+  sudo apt install unzip -y &>/dev/null
+fi
+
+# 1. Install omp
+if ! command -v oh-my-posh &>/dev/null ; then
+  echo "[INFO] Installing oh-my-posh..."
+  sudo wget -q https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+  sudo chmod +x /usr/local/bin/oh-my-posh
+else
+  echo "[WARN] You have already installed oh-my-posh!"
+fi
+
+# 2. Istall hack fonts
+# echo "[INFO] Installing hack fonts..."
+# sudo apt-get -y install fonts-hack-ttf &>/dev/null
+
+# 3. Install themes
+if [ ! -d /home/$USER/.poshthemes ] ; then
+  echo "[INFO] Installing oh-my-posh themes..."
+  mkdir /home/$USER/.poshthemes
+  wget -q https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O /home/$USER/.poshthemes/themes.zip
+  unzip -q -o /home/$USER/.poshthemes/themes.zip -d /home/$USER/.poshthemes
+  chmod u+rw /home/$USER/.poshthemes/*.omp.*
+  rm /home/$USER/.poshthemes/themes.zip
+else
+  echo "[WARN] You have already installed oh-my-posh themes!"
+fi
+
+# 4. Config bash
+if ! grep -q oh-my-posh /home/$USER/.bashrc ; then
+  echo "[INFO] Configurating oh-my-posh for bash..."
+  sed -i "$ a\eval \"\$(oh-my-posh --init --shell bash --config /home/$USER/.poshthemes/amro.omp.json)\"" /home/$USER/.bashrc
+else
+  echo "[WARN] You have already configurated oh-my-posh for $USER!"
+fi
+
+if ! sudo grep -q oh-my-posh /root/.bashrc ; then
+  sudo sed -i "$ a\eval \"\$(oh-my-posh --init --shell bash --config /home/$USER/.poshthemes/amro.omp.json)\"" /root/.bashrc
+else
+  echo "[WARN] You have already configurated oh-my-posh for root!"
+fi
+```5:["$","main",null,{"className":"page-module__aW5Xbq__wrapper","children":["$","$Le",null,{"content":"$f","className":"page-module__aW5Xbq__markdown"}]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+10:I[27201,["/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/803a574de9eda7ae.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Oh my posh • Setup"}],["$","meta","1",{"name":"description","content":"MR-Addict's ubuntu setup scripts"}],["$","link","2",{"rel":"icon","href":"/setup/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L10","3",{}]]

@@ -1,0 +1,49 @@
+1:"$Sreact.fragment"
+2:I[79108,["/setup/_next/static/chunks/42bf59fbf0427e83.js","/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/e7022a0fcdbf6899.js","/setup/_next/static/chunks/fa8002d68d2f6b83.js"],"default"]
+4:I[97367,["/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/803a574de9eda7ae.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+:HL["/setup/_next/static/chunks/efd4962e8d0d2dbe.css","style"]
+3:T45a,[Back](/)
+
+# Vim
+
+Personal vim configuration.
+
+You can install this script by running the following command in your terminal.
+
+```sh
+curl -sL https://MR-Addict.github.io/setup/api/script/vim | bash
+```
+
+Below is the raw script content, which you can also get from the command above from the api https://MR-Addict.github.io/setup/api/script/vim.
+
+```sh
+#! /bin/bash
+
+# 1. Install Vim
+if ! command -v vim &>/dev/null ; then
+  echo "[INFO] Installing vim..."
+  sudo apt-get install vim -y &>/dev/null
+else
+  echo "[WARN] You have installed vim!"
+fi
+
+# 2. Config vim
+if [ ! -f /home/$USER/.vimrc ] ; then
+  echo "[INFO] Configurating vim for $USER..."
+  wget -q https://MR-Addict.github.io/setup/assets/vim/vimrc -O /home/$USER/.vimrc
+else
+  echo "[WARN] You have already configurated vim in $USER!"
+fi
+
+if ! sudo test -f /root/.vimrc; then
+  echo "[INFO] Configurating vim for root..."
+  sudo cp /home/$USER/.vimrc /root
+else
+  echo "[WARN] You have already configurated vim in root!"
+fi
+
+echo "[INFO] Configuting vim as your default editor..."
+sudo update-alternatives --set editor /usr/bin/vim.basic &>/dev/null
+```0:{"buildId":"jhsDNNAZjHD1x2bZOqopz","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"page-module__aW5Xbq__wrapper","children":["$","$L2",null,{"content":"$3","className":"page-module__aW5Xbq__markdown"}]}],[["$","link","0",{"rel":"stylesheet","href":"/setup/_next/static/chunks/efd4962e8d0d2dbe.css","precedence":"next"}],["$","script","script-0",{"src":"/setup/_next/static/chunks/ff1a16fafef87110.js","async":true}],["$","script","script-1",{"src":"/setup/_next/static/chunks/e7022a0fcdbf6899.js","async":true}],["$","script","script-2",{"src":"/setup/_next/static/chunks/fa8002d68d2f6b83.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"loading":null,"isPartial":false}
+6:null

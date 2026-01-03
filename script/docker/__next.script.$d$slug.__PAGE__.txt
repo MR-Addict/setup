@@ -1,0 +1,53 @@
+1:"$Sreact.fragment"
+2:I[79108,["/setup/_next/static/chunks/42bf59fbf0427e83.js","/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/e7022a0fcdbf6899.js","/setup/_next/static/chunks/fa8002d68d2f6b83.js"],"default"]
+4:I[97367,["/setup/_next/static/chunks/ff1a16fafef87110.js","/setup/_next/static/chunks/803a574de9eda7ae.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+:HL["/setup/_next/static/chunks/efd4962e8d0d2dbe.css","style"]
+3:T598,[Back](/)
+
+# Docker
+
+Docker and docker-compose.
+
+You can install this script by running the following command in your terminal.
+
+```sh
+curl -sL https://MR-Addict.github.io/setup/api/script/docker | bash
+```
+
+Below is the raw script content, which you can also get from the command above from the api https://MR-Addict.github.io/setup/api/script/docker.
+
+```sh
+#! /bin/bash
+
+# 1. Install docker
+if ! command -v docker &>/dev/null ; then
+  echo "[INFO] Installing docker..."
+  sudo apt-get install docker.io -y &>/dev/null
+  sudo usermod -aG docker $USER
+else
+  echo "[WARN] You have already installed docker!"
+fi
+
+# 2. Install docker-compose
+if ! command -v docker-compose &>/dev/null ; then
+  echo "[INFO] Installing docker-compose..."
+  wget -q https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -O docker-compose
+  chmod +x docker-compose
+  sudo mv docker-compose /usr/local/bin
+else
+  echo "[WARN] You have installed docker-compose!"
+fi
+
+# 3. Setup proxy
+if [ ! -f /etc/systemd/system/docker.service.d/proxy.conf ] ; then
+  echo "[INFO] Configurated proxy for docker!"
+  sudo mkdir -p /etc/systemd/system/docker.service.d
+  sudo wget -q https://MR-Addict.github.io/setup/assets/docker/proxy.conf -O /etc/systemd/system/docker.service.d/proxy.conf
+  sudo systemctl daemon-reload
+  sudo systemctl restart docker.service
+else
+  echo "[WARN] You have already configurated proxy for docker!"
+fi
+```0:{"buildId":"jhsDNNAZjHD1x2bZOqopz","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"page-module__aW5Xbq__wrapper","children":["$","$L2",null,{"content":"$3","className":"page-module__aW5Xbq__markdown"}]}],[["$","link","0",{"rel":"stylesheet","href":"/setup/_next/static/chunks/efd4962e8d0d2dbe.css","precedence":"next"}],["$","script","script-0",{"src":"/setup/_next/static/chunks/ff1a16fafef87110.js","async":true}],["$","script","script-1",{"src":"/setup/_next/static/chunks/e7022a0fcdbf6899.js","async":true}],["$","script","script-2",{"src":"/setup/_next/static/chunks/fa8002d68d2f6b83.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"loading":null,"isPartial":false}
+6:null
